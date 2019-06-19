@@ -7,13 +7,19 @@ import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.ly.uiadapter10.utils.UiUtils;
+
 public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         Log.i("lylog", "BaseActivity");
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//全屏显示
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);//没标题栏
-        UiUtils.setAdapterScreen(this,getApplication());
+        setOrientation();
         super.onCreate(savedInstanceState);
+    }
+
+    private void setOrientation() {
+        UiUtils.setDefault(BaseActivity.this);
     }
 }
